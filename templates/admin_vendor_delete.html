@@ -1,0 +1,99 @@
+{% extends 'Dashboard.html' %}
+{% block title %}Home-E | sp_details{% endblock title %}
+{% block style %}
+
+{% comment %} body {
+    padding: 20px;
+} {% endcomment %}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #dee2e6;
+}
+
+th {
+    background-color: #f8f9fa;
+}
+
+.delete-form {
+    display: inline-block;
+    margin: 0;
+}
+
+.delete-button {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.delete-button:hover {
+    background-color: #c82333;
+}
+
+@media (max-width: 576px) {
+    table {
+        font-size: 12px;
+    }
+}
+.nav__logo {
+    color: var(--white-color);
+    font-weight: 600;
+    
+}
+{% endblock style %}
+
+
+
+{% block body %}
+{% for m in messages %}
+<div class="alert alert-primary alert_messege" role="alert">
+  {{m}}
+</div>
+{% endfor %}
+<div class="container">
+    <h2>Vendor Details</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Vendor Name</th>
+                <th>Email Address</th>
+                <th>phone number</th>
+                <th>services</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for v in ven %}
+            
+           
+            <tr>
+                <td>{{v.name}}</td>
+                <td>{{v.email}}</td>
+                <td>{{v.ph_no}}</td>
+                <td>{{v.services}}</td>
+                <td>
+                    <form class="delete-form" method='post' action="{% url 'vendor_delete' v.id %}">
+                        {% csrf_token %}
+                        <button type="submit" class="delete-button" name="button">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+{% endblock body %}

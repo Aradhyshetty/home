@@ -1,0 +1,342 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+   <!--=============== REMIXICONS ===============-->
+   <link href="https://cdn.jsdelivr.net/npm/remixicon@3.0.0/fonts/remixicon.css" rel="stylesheet">
+
+   <!--=============== CSS ===============-->
+   <link rel="stylesheet" href="assets/css/styles.css">
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+   <title>Home-E | Login</title>
+
+   <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap");
+
+      /*=============== VARIABLES CSS ===============*/
+      :root {
+         /*========== Colors ==========*/
+         /*Color mode HSL(hue, saturation, lightness)*/
+         --white-color: hsl(0, 0%, 0%);
+         --black-color: hsl(0, 0%, 0%);
+		 --white2-color:hsl(0, 50%, 99%);
+
+         /*========== Font and typography ==========*/
+         /*.5rem = 8px | 1rem = 16px ...*/
+         --body-font: "Poppins", sans-serif;
+         --h1-font-size: 1.75rem;
+         --normal-font-size: 1rem;
+         --small-font-size: .813rem;
+
+         /*========== Font weight ==========*/
+         --font-medium: 500;
+      }
+
+      /*=============== BASE ===============*/
+      * {
+         box-sizing: border-box;
+         padding: 0;
+         margin: 0;
+      }
+
+      body,
+      input,
+      button {
+         font-size: var(--normal-font-size);
+         font-family: var(--body-font);
+      }
+
+      body {
+         color: var(--white-color);
+      }
+
+      input,
+      button {
+         border: none;
+         outline: none;
+      }
+
+      a {
+         text-decoration: none;
+      }
+
+      img {
+         max-width: 100%;
+         height: auto;
+      }
+
+      /*=============== LOGIN ===============*/
+      .login {
+         position: relative;
+         height: 100vh;
+         display: grid;
+         align-items: center;
+         justify-content: center;
+      }
+
+      .login--img {
+         position: absolute;
+         width: 100%;
+         height: 100%;
+         object-fit: cover;
+         object-position: center;
+      }
+
+      .login--form {
+         position: relative;
+         background-color: hsla(0, 0%, 0%, 0.1);
+         border: 2px solid var(--white-color);
+         margin-inline: 1.5rem;
+         padding: 2.5rem 1.5rem;
+         border-radius: 1rem;
+         backdrop-filter: blur(8px);
+		 height: 476px;
+    	 width: 396px;
+      }
+
+      .login--title {
+         text-align: center;
+         font-size: var(--h1-font-size);
+         font-weight: var(--font-medium);
+         margin-bottom: 2rem;
+      }
+
+      .login--content,
+      .login--box {
+         display: grid;
+      }
+
+      .login--content {
+         row-gap: 1.75rem;
+         margin-bottom: 1.5rem;
+      }
+
+      .login--box {
+         grid-template-columns: max-content 1fr;
+         align-items: center;
+         column-gap: 1rem;
+         border-bottom: 2px solid var(--white-color);
+      }
+
+      .login--icon,
+      .login--eye {
+         font-size: 1.25rem;
+      }
+
+      .login--input {
+     width: 100%;
+     padding-block: .8rem;
+     background: none;
+     color: var(--white2-color);
+     position: relative;
+     z-index: 1;
+  }
+
+  .login--box-input {
+     position: relative;
+  }
+
+  .login--lable {
+     position: absolute;
+     left: 0;
+     top: 13px;
+     font-weight: var(--font-medium);
+     transition: top .3s, font-size.3s;
+  }
+
+  .login--eye {
+     position: absolute;
+     right: 0;
+     top: 18px;
+     z-index: 10;
+     cursor: pointer;
+  }
+
+  .login--box:nth-child(2).input {
+     padding-right: 1.8rem;
+  }
+
+  .login--check,
+  .login--check-group {
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+  }
+
+  .login--check {
+     margin-bottom: 1.5rem;
+  }
+
+  .login--check,
+  .login--forgot,
+  .login--register {
+     font-size: var(--small-font-size);
+  }
+
+  .login--check-group {
+     column-gap: .5rem;
+  }
+
+  .login--check-input {
+     width: 16px;
+     height: 16px;
+  }
+
+  .login--forgot {
+     color: var(--white-color);
+  }
+
+  .login--forgot:hover {
+     text-decoration: underline;
+  }
+
+  .login--button {
+     width: 100%;
+     padding: 1rem;
+     border-radius: .5rem;
+     background-color: var(--white2-color);
+     font-weight: var(--font-medium);
+     cursor: pointer;
+     margin-bottom: 2rem;
+  }
+
+  .login--register {
+     text-align: center;
+  }
+
+  .login--register a {
+     color: var(--white-color);
+     font-weight: var(--font-medium);
+  }
+
+  .login--register a:hover {
+     text-decoration: under;
+  }
+
+  /* Input focus move up label */
+  /*.login--input:focus+ .login--label {
+     top:-12px;
+     font-size: var(--small-font-size);
+  }*/
+  .login--box-input input:focus~label,
+  .login--box-input input:valid~label {
+     top: -12px;
+  }
+
+  /* Input focus sticky top label */
+  /*.login--input:not(:placeholder-shown).login--input:not(:focus)+ .login--label {
+     top: -12px;
+     font-size: var(--small-font-size);
+  }*/
+
+  /*=============== BREAKPOINTS ===============*/
+  /* For medium devices */
+  @media screen and (min-width: 576px) {
+     .login {
+        justify-content: center;
+     }
+
+     .login--form {
+        width: 432px;
+        padding: 4rem 3rem 3.5rem;
+        border-radius: 1.5rem;
+     }
+
+     .login--title {
+        font-size: 2rem;
+     }
+  }
+  .login--input:focus {
+   outline: none;
+   box-shadow: none;
+   border-color: transparent;
+}
+.alert-danger{
+   margin-bottom:0px;
+}
+
+   </style>
+</head>
+<body>
+   {% if messages  %}
+      {% for m in messages %}
+      
+            {% if m.tags == 'success' %}
+            <div class="alert alert-warning alert-dismissible fade show" role="alert" style="margin-bottom:0px" mb=0>
+               <strong>please login!</strong>{{m}}
+               <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                 <span aria-hidden="true">&times;</span>
+               </button>
+             </div>
+            {% elif m.tags == 'warning' %}
+               <div class="alert alert-danger"  role="alert" mb=0>
+                  {{m}}
+               </div>
+            {% endif %}
+      {% endfor %}
+   {% endif %}
+   <div class="login">
+      <img src=" {% static './b2.jpg' %} " alt="login image" class="login--img">
+      <form action="/login" class="login--form" action="/login" method="post" enctype="multipart/form-data">
+		{% csrf_token %}
+         <h1 class="login--title">login</h1>
+         <div class="login--content">
+            <div class="login--box">
+               <i class="ri-user-3-line login--icon "></i>
+               <div class="login--box-input">
+                  <input type="email" required class="login--input" placeholder=" "name="email">
+                  <label for="" class="login--lable">Email</label>
+               </div>
+            </div>
+            <div class="login--box">
+               <i class="ri-lock-2-line login--icon"></i>
+               <div class="login--box-input">
+               <input type="password" required class="login--input" name="pas1" id="login-pass" placeholder=" ">
+               <label for="" class="login--lable">Password</label>
+               <i class="ri-eye-off-line login--eye " id="login--eye"></i>
+               </div>
+            </div>
+         </div>
+         <div class="login--check">
+            <div class="login--check-group">
+               <input type="checkbox" class="login--check-input" value="1" name="remember">
+               <label for="" class="login--check-lable" name="remember">Remember me</label>
+            </div>
+            <a href="/reset_password" class="login--forgot">Forgot Password?</a>
+         </div>
+         <input type="submit" class="login--button" value="login">Login
+         <p class="login--register">Don't have an account?<a href="/user_register">Register</a></p>
+      </form>
+
+   </div>
+   <script>
+      /*=============== SHOW HIDDEN - PASSWORD ===============*/
+      const showHiddenPass = (loginPass, loginEye) => {
+         const input = document.getElementById(loginPass),
+            iconEye = document.getElementById(loginEye);
+         iconEye.addEventListener('click', () => {
+            // Change password to text
+            if (input.type === 'password') {
+               // Switch to text
+               input.type = 'text';
+               // Icon change
+               iconEye.classList.add('ri-eye-line');
+               iconEye.classList.remove('ri-eye-off-line');
+            } else {
+               // Change to password
+               input.type = 'password';
+               // Icon change
+               iconEye.classList.remove('ri-eye-line');
+               iconEye.classList.add('ri-eye-off-line');
+            }
+         });
+      };
+      showHiddenPass('login-pass', 'login--eye');
+   </script>
+</body>
+</html>

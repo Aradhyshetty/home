@@ -1,0 +1,103 @@
+
+{% extends 'Dashboard.html' %}
+{% block title %} Confirm vendor|Home-E Service{% endblock title %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.js"></script>
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
+    <link rel="shortcut icon" href="{% static 'favicon-Event.png' %}" type="image/x-icon">
+    
+    
+</head>
+{% block body %}
+      
+<body style="background-color: #B0DAFF;">
+  {% if ven %}
+    <table class="table align-middle mb-0 shadow p-2 mb-5  rounded" style="background-color:#B0DAFF;">
+        <thead class="">
+          <tr>
+            <th>Name</th>
+            <th>Service</th>
+            <th>Phone Number</th>
+            <th>Address</th>
+            <th>Aprove</th>
+            <th>Abort</th>
+          </tr>
+        </thead>
+        <tbody>
+         
+          {% for v in ven  %}
+            
+          
+          <tr>
+            <td>
+              <div class="d-flex align-items-center">
+                <img
+                    src={{v.image.url}}
+                    alt=""
+                    style="width: 45px; height: 45px"
+                    class="rounded-circle"
+                    />
+                <div class="ms-3">
+                  <p class="fw-bold mb-1">{{v.email}}</p>
+                  <p class="text-muted mb-0">{{v.email}}</p>
+                </div>
+              </div>
+            </td>
+            <td>
+              <p class="fw-normal mb-1">{{v.services}}</p>
+              
+            </td>
+            <td>{{v.ph_no}}</td>
+            <td>{{v.address}}</td>
+            <form action="{% url 'vaction' v.id %}" method="post">
+              {% csrf_token %}
+            <td>
+                <button
+                type="submit"
+                class="btn btn-success btn-rounded btn-sm fw-bold"
+                data-mdb-ripple-color="dark"
+                data-mdb-ripple-duration="0"
+                name="button"
+                value="confirm"
+                >
+          Confirm
+        </button>
+      </form>
+      <form action="{% url 'vaction' v.id %}" method="post">
+        {% csrf_token %}
+            </td>
+            <td>
+                <button
+                type="submit"
+                class="btn btn-danger btn-rounded btn-sm fw-bold"
+                data-mdb-ripple-color="dark"
+                data-mdb-ripple-duration="0"
+                name="button"
+                value="delete"
+                >
+              
+          Delete
+        </button>
+      </form>
+            </td>
+          </tr>
+          {% endfor %}
+         
+        </tbody>
+      </table>
+      {% else %}
+      <img src="{% static 'nodata.jpg' %}" alt="" class="mx-auto d-block">
+      
+    {% endif %}
+</body>
+{% endblock body %}
+</html>

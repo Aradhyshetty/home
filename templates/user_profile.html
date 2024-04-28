@@ -1,0 +1,231 @@
+{% extends "index.html" %}
+
+{% block head %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+{% endblock head %}
+{% block nav_item  %}
+  <li class="nav-item">
+    <a class="nav-link active nav_item" href="/log_out" style="font-family: 'Libre Baskerville', serif;">logout</a>
+  </li>
+{% endblock nav_item %}
+{% block nav_service %}
+
+<li class="nav-item">
+  <a class="nav-link active nav_item " href="/#service" style="font-family: 'Libre Baskerville', serif;">Services</a>
+</li>
+   <li class="nav-item">
+     <a class="nav-link active nav_item" id="submit" href="user_profile" style="font-family: 'Libre Baskerville', serif;">profile</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link active nav_item" id="submit" href="user_bookings" style="font-family: 'Libre Baskerville', serif;">bookings</a>
+</li>
+{% endblock nav_service %}
+
+{% block style1 %}
+<style>
+  .nav_bar{
+    background-color:#B0DAFF; 
+    margin-top: -100px;
+  
+  }
+  .wrap {
+    position: relative;
+    display: inline-block;
+  }
+
+  .hover-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .wrap:hover .hover-button {
+    opacity: 1;
+  }
+
+  .wrap:hover .op {
+    opacity: 0.5;
+  }
+
+  .popup-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.3s;
+  }
+
+  .popup-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 500px;
+    width: 90%;
+    position: relative;
+  }
+
+  .popup-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 18px;
+  }
+
+  .popup-container.show {
+    visibility: visible;
+    opacity: 1;
+  }
+  .nav_item{
+    font-size: 25px;
+  }
+  h4{
+    color: black;
+  }
+  .profile-image{
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+  .card {
+    border-radius: .5rem;
+    height: 600px;
+    width:800px;
+    margin-top:-50px;
+  }
+  .card img {
+    width: 150px;
+    height: 170px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom:5px;
+  }
+</style>
+{% endblock style1 %}
+{% block body %}
+{% for p in profile %}
+  
+
+<section class="vh-75" style="background-color: #bfd4ff;">
+  <div class="container py-5 h-100" style="padding-top:10px;">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col col-lg-6 mb-4 mb-lg-0">
+        <div class="card mb-3" style="border-radius: .5rem;">
+          <div class="row g-0">
+            <div class="col-md-4 gradient-custom text-center text-white"
+              style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
+              {% if p.image %}
+              <img src="{{p.image.url}}"
+                alt="Avatar" class="img-fluid my-5" style="width: 150px;" />
+                {% else %}
+                <img src=""
+                alt="mahesh" class="img-fluid my-5" style="width: 80px;" />
+              {% endif %}
+              <h4>{{p.name}}</h4>
+              <p>Web Designer</p>
+              <div class="wrap">
+                <button class="btn" data-mdb-ripple-duration='0' onclick="showPopup()">
+                  <i class="fas fa-edit"></i> Edit
+                </button>
+              </div>
+            </div>
+            <div class="col-md-8">
+              <div class="card-body p-4">
+                <h6>Information</h6>
+                <hr class="mt-0 mb-4">
+                <div class="row pt-1">
+                  <div class="col-6 mb-3">
+                    <h6>Email</h6>
+                    <p class="text-muted">{{p.username}}</p>
+                  </div>
+                  <div class="col-6 mb-3">
+                    <h6>Phone</h6>
+                    <p class="text-muted">{{p.ph_no}}</p>
+                  </div>
+                </div><br>
+             <h6>other info</h6>
+                <hr class="mt-0 mb-4">
+                <div class="row pt-1">
+                  <div class="col-6 mb-3">
+                    <h6>Recent</h6>
+                    <p class="text-muted">{{p.address}}</p>
+                  </div>
+                  {% comment %} <div class="col-6 mb-3">
+                    <h6>Most Viewed</h6>
+                    <p class="text-muted">Dolor sit amet</p>
+                  </div> {% endcomment %}
+                </div> 
+                <div class="d-flex justify-content-start">
+                  <a href="#!"><i class="fab fa-facebook-f fa-lg me-3"></i></a>
+                  <a href="#!"><i class="fab fa-twitter fa-lg me-3"></i></a>
+                  <a href="#!"><i class="fab fa-instagram fa-lg"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Popup Container -->
+<div class="popup-container" id="popupContainer">
+  <div class="popup-content">
+    <span class="popup-close" onclick="hidePopup()">X</span>
+    <h4>Edit Information</h4>
+    <form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+      <input type="hidden" name="hiddenField" value="{{p.id}}" name="id">
+      <div class="mb-3">
+        <label for="nameInput" class="form-label">Name</label>
+        <input type="text"  name="name" class="form-control" id="nameInput" placeholder="Enter your name">
+      </div>
+      <div class="mb-3">
+          <label for="addressInput" class="form-label">Address</label>
+          <input type="text" name="address"class="form-control" id="addressInput" placeholder="Enter your address">
+      </div>
+      <div class="mb-3">
+        <label for="emailInput" class="form-label">Email</label>
+        <input type="email" class="form-control" id="emailInput" placeholder="{{p.email}}" disabled>
+      </div>
+      <div class="mb-3">
+        <label for="phoneInput" class="form-label">Phone</label>
+        <input type="text" name="ph_no" class="form-control" id="phoneInput" placeholder="Enter your phone number">
+      </div>
+      <div class="mb-3">
+        <label for="imageInput" class="form-label">Image</label>
+        <input type="file" name="image" class="form-control" id="imageInput">
+      </div>
+      <button type="submit" class="btn btn-primary " data-mdb-ripple-duration='0'>Save Changes</button>
+    </form>
+  </div>
+</div>       
+</div>  
+{% endfor %}
+<script>
+  function showPopup() {
+    var popupContainer = document.getElementById("popupContainer");
+    popupContainer.classList.add("show");
+  }
+
+  function hidePopup() {
+    var popupContainer = document.getElementById("popupContainer");
+    popupContainer.classList.remove("show");
+  }
+</script>
+{% endblock body %}

@@ -1,0 +1,70 @@
+from django.utils import timezone
+from myapp.models import Entry
+
+def delete_entries(request):
+    current_date = timezone.now().date()
+    entries_to_delete = Entry.objects.filter(date=current_date)
+    entries_to_delete.delete()
+    return HttpResponse("Entries deleted successfully.")
+
+
+{% comment %} form validation {% endcomment %}
+from django import forms
+
+class ServiceBookingForm(forms.Form):
+    ph_no = forms.CharField(label='Phone Number', max_length=15)
+    address = forms.CharField(label='Address', max_length=100)
+    time = forms.CharField(label='Time', max_length=20)
+    date = forms.DateField(label='Date')
+    
+    def clean_ph_no(self):
+        ph_no = self.cleaned_data['ph_no']
+        # Add your validation logic for the phone number
+        # Example: validate that the phone number is a valid format
+        # You can use regular expressions or other validation techniques
+        if not ph_no.isnumeric():
+            raise forms.ValidationError('Invalid phone number')
+        return ph_no
+    
+    def clean_date(self):
+        date = self.cleaned_data['date']
+        # Add your validation logic for the date
+        # Example: validate that the date is in the future or within a specific range
+        if date < datetime.date.today():
+            raise forms.ValidationError('Invalid date')
+        return date
+
+
+        from django.shortcuts import render
+        from myapp.forms import ServiceBookingForm
+        
+        def service_bookings(request, service_id):
+            if request.method == 'POST':
+                form = ServiceBookingForm(request.POST)
+                if form.is_valid():
+                    # Process the form data and save the booking
+                    # ...
+                    return render(request, 'success.html')
+            else:
+                form = ServiceBookingForm()
+            
+            return render(request, 'service_bookings.html', {'form': form})
+
+            
+..............................................
+<form action="{% url 'service_bookings' s.id %}"  method="post">
+    {% csrf_token %}
+    
+    <div class="form-group">
+        <label for="phone">Phone Number:</label>
+        <input type="text" name="ph_no" class="form-control" id="phone" placeholder="Enter phone number" required>
+        {% if form.errors.ph_no %}
+            <p class="error">{{ form.errors.ph_no }}</p>
+        {% endif %}
+    </div>
+    
+    <!-- Add similar error display for other fields -->
+    
+    <input type="submit" class="btn btn-primary" value="Submit">
+    <button type="button" class="btn btn-secondary" data-dismiss="popup">Close</button>
+</form>

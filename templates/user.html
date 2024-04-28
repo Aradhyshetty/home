@@ -1,0 +1,271 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.js"></script>
+    <link rel="stylesheet" href="{% static '/style.css' %}">
+    <script src="https://kit.fontawesome.com/05950a9575.js" crossorigin="anonymous"></script>
+    <title>Home-E|plumber</title>
+
+    <style>
+            @import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans&display=swap');
+
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body{
+	font-size: 1.7rem;
+	font-family: 'Merriweather Sans', sans-serif;
+	background-color: #B0DAFF;
+	color: #fcfcfc;
+	padding: 4rem;
+}
+
+h2{
+	text-align: center;
+	margin-bottom: 5rem;
+	font-size: 4rem;
+}
+
+.all-products{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+.product{
+	overflow: hidden;
+	background: #fd9092;
+	color: #21201e;
+	text-align: center;
+	width: 550x;
+	height: 650px;
+	padding: 2rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	border-radius: 1.2rem;
+	margin-right: 2rem;
+	margin-bottom: 2rem;
+}
+
+.product .product-title, .product .product-price{
+	font-size: 18px;
+}
+.product-title{
+	margin-bottom: 10px;
+	margin-top: 7px;
+
+}
+
+.product:hover img{
+	scale:  1.1;
+}
+
+.product:hover {
+	box-shadow: 5px 15px 25px #eeeeee;
+}
+
+.product img {
+    height: 311px;
+    margin: 1rem;
+    transition: all 0.3s;
+    width: 401px;
+    border-radius: 20px;
+}
+
+.product a:link, .product a:visited{
+	color: #ececec;
+	display: inline-block;
+	text-decoration: none;
+	background-color: #2c3e50;
+	padding: 1.2rem 3rem;
+	border-radius: 1rem;
+	margin-top: 1rem;
+	font-size: 14px;
+	transition: all 0.2s;
+}
+
+.product a:hover{
+	transform: scale(1.1);
+}
+.logo_img{
+    margin-right: -131px;
+    margin-left: -140px;
+    width: 406px;
+    margin-top: -9px;
+}
+
+
+
+.mainContainer {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+}
+
+.btn {
+  outline: none;
+  border: none;
+  background-color: rgb(12, 252, 24);
+  color: black;
+  font-size: 20px;
+  padding: 1rem 4rem;
+  border-radius: 2rem;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: rgb(32, 236, 42);
+
+}
+
+.popupContainer {
+  position: absolute;
+  top: -10%;
+  width: 20rem;
+  transform: scale(0.1);
+  border-radius: 1rem;
+  background-color: #ECF9FF;
+  visibility: hidden;
+  padding: 1rem;
+  transition: all .4s linear;
+  z-index:1;
+  margin-left: 190px;
+  margin-top: 97px;
+}
+
+.popupActive {
+  top: 30%;
+  visibility: visible;
+  transform: scale(1.1);
+}
+
+.popupContainer h2,
+p {
+  text-align: center;
+}
+
+#close {
+  width: 100%;
+  font-size: 1.2rem;
+  margin-top: 1rem;
+  padding: .6rem;
+  border-radius: 2rem;
+  border: none;
+  text-transform: uppercase;
+  font-weight: bold;
+  cursor: pointer;
+  color: rgb(77, 0, 0);
+
+  background-color: rgb(245, 73, 73);
+}
+
+#close:hover {
+  color: rgb(245, 73, 73);
+  background-color: rgb(234, 183, 183);
+
+}
+
+#image {
+  width: 5rem;
+  margin: 0 auto;
+  display: block;
+  position: relative;
+  top: -1rem;
+  background-color: rgb(236, 225, 66);
+  border-radius: 50%;
+}
+.profile_heding{
+	font-size: 2rem;
+	margin-bottom: 3px;
+    color: #21201e;
+}
+.profile_email{
+    color: #21201e;
+    font-size: 10px;
+}
+.submit {
+    border-radius: 25px;
+    width: 66px;
+    height: 41px;
+}
+
+    </style>
+
+</head>
+<body style="background-color:#B0DAFF;">
+  <nav class="navbar navbar-expand-lg navbar-custom   navbar-light" style="background-color:#B0DAFF; margin-top: -150px;">
+    <div class="container-fluid" style=" margin-bottom: 5px; margin-top: 5px;">
+      <a class="navbar-brand" href="/home" style="margin: 0px; margin-right: -60px;">
+        <img src="{% static './img/logo.png' %}" class="logo_img" alt="Bootstrap"  >
+        Home-E Services
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/home" name="home" style="font-family: 'Libre Baskerville', serif;;">Home</a>
+          </li>
+          <li class="nav-item">
+      
+            <a class="nav-link active" href="/home" style="font-family: 'Libre Baskerville', serif;" >About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active " href="#service" style="font-family: 'Libre Baskerville', serif;">Services</a>
+          </li>
+		  <li class="nav-item">
+			<a class="nav-link active" id="submit" href="#" style="font-family: 'Libre Baskerville', serif;">profile</a>
+    </li> 
+    <li class="nav-item">
+<a class="nav-link active" id="submit" href="/log_out" style="font-family: 'Libre Baskerville', serif;">logout</a>
+</li>
+		  <div class="popupContainer" id="popupMenu">
+			 <img id="image" src="{% static './img/logo.png' %}" alt="">
+		
+				<h2 class="profile_heding"> {{names.first_name}}</h2>
+				<p class="profile_email">{{names.email}}</p>
+				<button type="submit" class="submit" > <i class="fa-solid fa-pen-to-square"></i></button>
+				<button id="close"> ok </button>
+			
+		   </div>
+		   
+        </ul>
+      </div>
+    </div>
+  </nav>
+	<section class="products">
+		<h2>Plumbers</h2>
+		<div class="all-products">
+			<div class="product">
+				<img src="./img/meghana.jpg">
+
+				<div class="product-info">
+					<h4 class="product-title"><b>Meghana Cleanings</b>
+					</h4>
+					<p class="product-price">Contact:6364479876</p>
+					<a class="product-btn" href="#">Book Now</a>
+
+				</div>
+			</div>
+			
+	</section>
+
+</body>
+<script src="{% static '/script.js' %}"></script>
+</html>

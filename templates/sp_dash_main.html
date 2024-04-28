@@ -1,0 +1,508 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block tital %}
+    <title>Admin Dashboard</title>
+    {% endblock tital %}
+   
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <script src="https://kit.fontawesome.com/05950a9575.js" crossorigin="anonymous"></script>
+        
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+
+        .warning {
+            display: none;
+        }
+
+        section {
+            display: flex;
+        }
+
+        .navbar {
+            width: 250px;
+            padding: 1rem;
+            position: relative;
+            {% comment %} height: 100vh; {% endcomment %}
+            overflow: hidden;
+            transition: all 0.3s;
+            box-shadow: 10px 10px 10px rgba(227, 215, 215, 0.434);
+        }
+
+        .navbar.active {
+            width: 0px;
+            padding: 0;
+        }
+
+        .navbar img {
+          margin-left: -202px;
+          width: 529px;
+          margin-bottom: -95px;
+          margin-top: -98px;
+        }
+
+        .center-nav,
+        .bottom-nav {
+            list-style: none;
+        }
+
+        .center-nav a,
+        .bottom-nav a {
+            color: #000;
+            text-decoration: none;
+            margin-left: 5px;
+        }
+
+        .center-nav li,
+        .bottom-nav li {
+            padding: 5px 20px;
+            margin: 5px 0;
+            transition: all 0.3s;
+        }
+
+        .center-nav li:hover,
+        .bottom-nav li:hover {
+            color: purple;
+            transform: translateX(4px);
+        }
+
+        .bottom-nav li a:hover,
+        .center-nav li a:hover {
+            color: purple;
+        }
+
+        hr {
+            margin-left: 20px;
+            height: 1.5px;
+            display: block;
+            margin-bottom: 5px;
+            width: 150px;
+            background-color: #2f2c2c1d;
+            outline: none;
+            border: none;
+        }
+
+        .bottom-nav {
+            position: absolute;
+            bottom: 30px;
+        }
+
+
+        /* ======= Main Content Styling ======= */
+        .bars {
+            cursor: pointer;
+        }
+
+        .main-content {
+            padding: 10px;
+            width: 100%;
+            background-color:#d6edf4;
+        }
+
+        .main-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px;
+            margin: 10px 0;
+        }
+
+        .bar {
+            margin: 3px 0;
+            width: 20px;
+            height: 4px;
+            border-radius: 4px;
+            background-color: #000;
+        }
+
+        .input {
+            width: 100%;
+            text-align: center;
+        }
+
+        .input input {
+            width: 90%;
+            outline: none;
+            border: none;
+            border: 1px solid rgb(153, 132, 132);
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        .user {
+            width: 40px;
+            position: relative;
+            transform: scaleX(-1);
+        }
+
+        .user img {
+            width: 100%;
+        }
+
+        /* ======== Styling Dashboard ======== */
+        .dashboard {
+            padding: 10px;
+            background-color: #d6edf4;
+        }
+
+        .heading {
+            margin: 10px 0;
+        }
+
+        .color-box {
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .box {
+            display: flex;
+            height: 250px;
+            flex-direction: column;
+            width: 350px;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            margin: 10px 5px;
+        }
+
+        .box i {
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+            color: #000000;
+        }
+
+        .box p {
+            line-height: 30px;
+        }
+
+        .skyblue {
+            background-color: rgb(135, 220, 253);
+        }
+
+        .yellow {
+            background-color: rgb(231, 251, 151);
+        }
+
+        .purple {
+            background-color: rgb(243, 178, 255);
+        }
+
+        .red {
+            background-color: rgb(255, 178, 178);
+        }
+
+        /* ======== Styling Recent Activity ======== */
+        .activity {
+            padding: 10px;
+            margin: 10px 0;
+        }
+
+        .activity table {
+            width: 100%;
+        }
+
+        tr {
+            row-gap: 0px;
+        }
+
+        th {
+            line-height: 40px;
+            text-align: left;
+        }
+
+        td {
+            line-height: 28px;
+        }
+
+        td,
+        th {
+            margin: 0;
+        }
+
+        @media screen and (max-width: 630px) {
+            section {
+                flex-direction: column;
+            }
+
+            .navbar {
+                width: 100%;
+                height: auto;
+                padding: 1rem;
+            }
+
+            .navbar img {
+                margin-left: 0;
+                margin-bottom: 10px;
+            }
+
+            .navbar.active {
+                height: 0;
+                padding: 0;
+            }
+
+            .center-nav li,
+            .bottom-nav li {
+                padding: 5px;
+                margin: 5px 0;
+            }
+
+            .main-top {
+                justify-content: space-around;
+            }
+
+            .input input {
+                width: 100%;
+            }
+
+            .user {
+                width: 30px;
+            }
+
+            .dashboard {
+                margin-top: 20px;
+            }
+
+            .box {
+                width: 100%;
+                margin: 10px 0;
+            }
+        }
+
+     
+        {% block style %}
+        .container_profile {
+            display: flex;
+            align-items: center;
+            
+            background-color: transparent;
+          }
+          
+          .profile {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            border-radius: 10px;
+          }
+          
+          .profile-image {
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 20px;
+          }
+          
+          .profile-image img {
+            display: block;
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+          }
+          
+          .profile-details {
+            display: flex;
+            flex-direction: column;
+          }
+          
+          .profile-name {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+          }
+          
+          .profile-services {
+            font-size: 18px;
+          }
+          
+          /* Additional Styles */
+          .container_profile {
+            justify-content: flex-start;
+            padding-left: 20px;
+          }
+          
+          .container_profile::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: inherit;
+            z-index: -1;
+          }
+        {% endblock style %}
+    </style>
+</head>
+
+<body>
+   
+    <div class="warning">
+        <h2>Sorry, this page doesn't support your device. Please use a large screen device to view this page.</h2>
+    </div>
+
+    <section>
+        <!-- User Sidebar Starts from Here -->
+        <div class="navbar" id="navigation">
+            <img src="{% static '/img/logo.png' %}" alt="">
+            Home-E Services
+            <ul class="center-nav">
+                <li><i class="fa-solid fa-house"></i><a href="sp_dash_main">Dashboard</a></li>
+                <li><i class="fa-solid fa-cart-shopping"></i><a href="sp_dash_bookings">bookings</a></li>
+                <li><i class="fa-solid fa-pen-to-square"></i><a href="sp_dash_profile">Profile</a></li>
+               
+                <li><i class="fa-sharp fa-solid fa-floppy-disk"></i><a href="#">Saves</a></li>
+               
+            </ul>
+            <ul class="bottom-nav">
+                <hr>
+                <li><i class="fa-solid fa-gear"></i><a href="#">Settings</a></li>
+                <li><i class="fa-solid fa-power-off"></i><a href="/log_out">Logout</a></li>
+            </ul>
+        </div>
+
+        <!-- User Top Naviagation Starts from Here -->
+        <div class="main-content">
+            <div class="main-top">
+                <div class="bars" id="menu">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+                <div class="input">
+                    <input type="text" placeholder="Search here...">
+                </div>
+                <div class="user">
+                    <img src="./user.png" alt="">
+                </div>
+            </div>
+
+            <!-- User Dashboard Starts from Here -->
+            <div class="dashboard">
+                {% block heading %}
+                <h2 class="heading">Dashboard</h2>
+                {% endblock heading %}
+                {% block body %}
+                {% for s in sp %}
+                <div class="container_profile">
+                    <div class="profile">
+                      <div class="profile-image">
+                        <img src="{{s.image.url}}" alt="Profile Image">
+                      </div>
+                      
+                      <div class="profile-details">
+                        <div class="profile-name">{{s.name}}</div>
+                    <div class="profile-services">{{s.services}}</div>
+                      </div>
+                    </div>
+                  </div>
+                  {% endfor %}
+                  <div class="color-box">
+                    <div class="box skyblue">
+                        <p><i class="fa-solid fa-thumbs-up"></i></p>
+                        <p>Total Bookings</p>
+                        <h3>{{t_count}}</h3>
+                    </div>
+                    <div class="box yellow">
+                        <p><i class="fa-solid fa-circle-info"></i></i></p>
+                        <p>pending Acceptance</p>
+                        <h3>{{p_count}}</h3>
+                    </div>
+                    <div class="box purple">
+                        <p><i class="fa-solid fa-check"></i></p>
+                        <p>Accepted Bookings</p>
+                        <h3>{{a_count}}</h3>
+                    </div>
+                 {% endblock body %}
+            </div>
+         
+            <!-- User Activity Starts from Here -->
+            {% comment %} <div class="activity">
+                <h2 class="heading">Recent Activity</h2>
+                <div class="activities">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Joined</th>
+                                <th>Type</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Raju</td>
+                                <td>contact.geekshelp@gmail.com</td>
+                                <td>01-12-2020</td>
+                                <td>Member</td>
+                                <td>Active</td>
+                            </tr>
+                            <tr>
+                                <td>Raju</td>
+                                <td>contact.geekshelp@gmail.com</td>
+                                <td>01-12-2020</td>
+                                <td>Member</td>
+                                <td>Active</td>
+                            </tr>
+                            <tr>
+                                <td>Raju</td>
+                                <td>contact.geekshelp@gmail.com</td>
+                                <td>01-12-2020</td>
+                                <td>Member</td>
+                                <td>Active</td>
+                            </tr>
+                            <tr>
+                                <td>Raju</td>
+                                <td>contact.geekshelp@gmail.com</td>
+                                <td>01-12-2020</td>
+                                <td>Member</td>
+                                <td>Active</td>
+                            </tr>
+                            <tr>
+                                <td>Raju</td>
+                                <td>contact.geekshelp@gmail.com</td>
+                                <td>01-12-2020</td>
+                                <td>Member</td>
+                                <td>Active</td>
+                            </tr>
+                            <tr>
+                                <td>Raju</td>
+                                <td>contact.geekshelp@gmail.com</td>
+                                <td>01-12-2020</td>
+                                <td>Member</td>
+                                <td>Active</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section> {% endcomment %}
+
+    <script>
+        {% block script %}
+        {% endblock script %}
+        // Toggle sidebar menu
+        const menu = document.getElementById("menu");
+        const navigation = document.getElementById("navigation");
+
+        menu.addEventListener("click", () => {
+            navigation.classList.toggle("active");
+        });
+    </script>
+    
+</body>
+
+</html>

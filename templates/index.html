@@ -1,0 +1,877 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <!-- code for popup -->
+    
+    <link rel="stylesheet" href="{% static '/style.css' %}">
+    {% block head %}
+
+    {% endblock head %}
+    {% block title %}
+    <title>Home-E Services|</title>
+    {% endblock title %}
+    
+      
+    
+    <style>
+  {% block style %}
+/*===== GOOGLE FONTS =====*/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+/*===== VARIABLES CSS =====*/
+:root{
+  --header-height: 3rem;
+
+  /*===== Colors =====*/
+  /* --first-color: #FCA4A6; */
+  --first-color:#B0DAFF;
+  --first-color-dark: #C1576A;
+  --first-color-darken: #A83E51;
+  --white-color: #576CBC;
+  
+  /*===== Font and typography =====*/
+  --body-font: 'Poppins', sans-serif;
+  --big-font-size: 2.5rem;
+  --normal-font-size: .938rem;
+  
+  /*===== z index =====*/
+  --z-fixed: 100;
+}
+
+  /* home  */
+  .home{
+    background-color: var(--first-color);
+    overflow: hidden;
+  }
+  
+  .home__container{
+    height: calc(100vh - var(--header-height));
+    grid-template-rows: repeat(2, max-content);
+    row-gap: 1.5rem;
+  }
+  
+  .home__img{
+    position: relative;
+    padding-top: 1.5rem;
+    justify-self: center;
+    width: 500px;
+    height: 233px;
+    background: url(".img/home.png");
+    background-size: cover;
+       
+  }
+  
+  .home__img img{
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  
+  .home__data{
+    color: var(--white-color);
+  }
+  
+  .home__title{
+    font-size: var(--big-font-size);
+    line-height: 1.3;
+    margin-bottom: 1rem;
+  }
+  
+  .home__description{
+    margin-bottom: 2.5rem;
+  }
+  
+  .home__button{
+    display: inline-block;
+    background-color: var(--first-color-dark);
+    color: var(--white-color);
+    padding: 1.125rem 2rem;
+    border-radius: .5rem;
+  }
+  
+  .home__button:hover{
+    background-color: var(--first-color-darken);
+  }
+  .move
+  {
+    width: 100%;
+  }
+
+@media screen and (max-width:600px){
+    :root{
+      --big-font-size: 3rem;
+      --normal-font-size: 1rem;
+    }
+    .home__img{
+      width: 700px;
+      height: 466px;
+    }
+    .home__img img {
+        width: 600px;
+        height: 322px;
+        position: absolute;
+        margin-left: 39px;
+    }
+    .home__data{
+      margin-left: 294px;
+    }
+    .home__title{
+        margin-left:-268px;
+        font-size: var(--big-font-size);
+        line-height: 1.3;
+        margin-bottom: 1rem;
+        margin-top: -147px;
+    }
+    .home__description{
+        margin-left:-268px;
+    }
+    .home__button{
+        margin-left:-200px;
+    }
+    .service_header{
+      color: rgb(49, 45, 45);
+      font-size: 45px;
+      font-weight: bold;
+      text-align: center;
+      margin-top: -209px;
+  }
+  .bd-grid {
+    max-width: 1153px;
+    display: grid;
+    grid-template-columns: 100%;
+    column-gap: 2rem;
+    width: calc(100% - 2rem);
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-bottom: 43px;
+  }
+}
+  @media screen and (min-width:601px) and (max-width:900px){
+    :root{
+      --big-font-size: 3rem;
+      --normal-font-size: 1.5rem;
+    }
+    .home__img{
+      width: 1100px;
+      height: 466px;
+    }
+    .home__img img {
+        width: 1068px;
+        height: 342px;
+        position: absolute;
+        margin-left: 15px;
+    }
+    .home__data{
+      margin-left: 294px;
+    }
+    .home__title{
+        margin-left:-268px;
+        font-size: var(--big-font-size);
+        line-height: 1.3;
+        margin-bottom: 1rem;
+        margin-top: -147px;
+    }
+    .home__description{
+        margin-left:-268px;
+    }
+    .home__button{
+        margin-left:-200px;
+    }
+    .service_header{
+      color: rgb(0, 0, 0);
+      font-size: 45px;
+      font-weight: bold;
+      text-align: center;
+      margin-top: -153px;
+  }
+  .bd-grid {
+    max-width: 1153px;
+    display: grid;
+    grid-template-columns: 100%;
+    column-gap: 2rem;
+    width: calc(100% - 2rem);
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-bottom: 43px;
+  }
+
+  }
+  @media screen and (min-width:901px)and (max-width:1200px){
+    :root{
+      --big-font-size: 5rem;
+      --normal-font-size: 1.5rem;
+    }
+    .home__img{
+      width: 1000px;
+      height: 466px;
+    }
+    .home__img img {
+        width: 981px;
+        height: 424px;
+        position: absolute;
+        align-items: center;
+        order: 1;
+        margin-left: 430px;
+        margin-top: 109px;
+    }
+    .home__data{
+      margin-left: 294px;
+    }
+    .home__title{
+        margin-left:-164px  ;
+        font-size: var(--big-font-size);
+        line-height: 1.3;
+        margin-bottom: 1rem;
+        margin-top: -364px;
+
+    }
+    .home__description{
+        margin-left:-164px;
+    }
+    .home__button{
+        margin-left:-164px;
+    }
+    .service_header{
+      color: rgb(49, 45, 45);
+      font-size: 45px;
+      font-weight: bold;
+      text-align: center;
+      margin-top: -66px;
+  }
+  }
+
+  @media screen and (min-width:1201px){
+    :root{
+      --big-font-size: 5rem;
+      --normal-font-size: 1.5rem;
+    }
+    .home__img{
+      width: 1000px;
+      height: 466px;
+    }
+    .home__img img {
+        width: 1000px;
+        height: 424px;
+        position: absolute;
+        align-items: center;
+        order: 1;
+        margin-left: 700px;
+        margin-top: 109px;
+    }
+    .home__data{
+      margin-left: 294px;
+    }
+    .home__title{
+        margin-left:-80px  ;
+        font-size: var(--big-font-size);
+        line-height: 1.3;
+        margin-bottom: 1rem;
+        margin-top: -450px;
+
+    }
+    .home__description{
+        margin-left:-80px;
+    }
+    .home__button{
+        margin-left:-80px;
+    }
+    .service_header{
+      color: rgb(49, 45, 45);
+      font-size: 45px;
+      font-weight: bold;
+      text-align: center;
+      margin-top: -209px;
+  }
+  }
+
+
+  
+  /*===== BASE =====*/
+  *,::before,::after{
+    box-sizing: border-box;
+  }
+  
+  body{
+    margin: var(--header-height) 0 0 0;
+    padding: 0;
+    font-family: var(--body-font);
+    font-size: var(--normal-font-size);
+    font-weight: 500;
+  }
+  
+  h1,p,ul{
+    margin: 0;
+  }
+  
+  ul{
+    padding: 0;
+    list-style: none;
+  }
+  
+  a{
+    text-decoration: none;
+  }
+  
+  img{
+    max-width: 100%;
+    height: auto;
+  }
+  
+  /*===== LAYOUT =====*/
+  .bd-grid{
+    max-width: 1024px;
+    display: grid;
+    grid-template-columns: 100%;
+    column-gap: 2rem;
+    width: calc(100% - 2rem);
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+  
+  .l-header{
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: var(--z-fixed);
+    background-color: var(--first-color);
+  }
+
+  /* services */
+  :root {
+      --main-color: #e00b4c;
+      --main-color2: #9fc4f4;
+      --font-color: #c4cfde;
+  }
+  
+  * {
+      font-family: 'Roboto', sans-serif;
+      box-sizing: border-box;
+      outline: none;
+      border: none;
+      text-decoration: none;
+      
+  }
+  
+  /* html {
+      font-size: 62.5%;
+      overflow-x: hidden;
+      scroll-padding-top: 9rem;
+      scroll-behavior: smooth;
+  }
+  
+  html::-webkit-scrollbar {
+      width: .8rem;
+  }
+  
+  html::-webkit-scrollbar-track {
+      background: transparent;
+  }
+  
+  html::-webkit-scrollbar-thumb {
+      background: var(--main-color2);
+      border-radius: 4rem;
+  }
+  
+  body {
+      background: var(--main-color2);
+  }
+   */
+  section {
+      padding: 4rem 5%;
+  } 
+  
+
+  .Portfolio .box-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 30px;
+     
+  }
+  
+  .Portfolio_box {
+      height: 450px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(145deg, #A3BED2, #0970f8);
+      box-shadow: 20px 20px 30px #B0DAFF,
+          -20px -20px 30px #B0DAFF;
+      border-radius: 20px;
+      
+  }
+  
+  .Portfolio_box_content {
+      width: 90%;
+      height: 90%;
+      /* background: red; */
+      transition: .3s linear;
+  }
+  
+  .Portfolio_img {
+      width: 100%;
+      height: 65%;
+      /* background-color: green; */
+      border-radius: 20px;
+      overflow: hidden;
+      transition: .3s linear;
+  }
+  
+  .Portfolio_img img {
+      width: 100%;
+      height: 100%;
+      margin: auto;
+      transition: .3s linear;
+  }
+  
+  .Portfolio_box_content:hover .Portfolio_img img {
+      transform: scale(1.1);
+  }
+  
+  .Portfolio_text {
+      font-size: 20px;
+      text-align: center;
+      padding-top: 30px;
+      color: var(--font-color);
+      transition: .2s;
+      overflow: hidden;
+      /* background: yellow; */
+  }
+  .link_to{
+      font-size: 20px;
+      text-align: center;
+      padding-top: 30px;
+      color: var(--font-color);
+      transition: .2s;
+      overflow: hidden;
+    }
+  
+  
+  .Portfolio_text ion-icon {
+      font-size: 40px;
+      transform: rotate(-60deg);
+      position: relative;
+      top: 60px;
+  }
+  
+  .Portfolio_box_content:hover .Portfolio_text .link_to{
+      color: var(--main-color);
+  }
+  
+  .Portfolio_box_content:hover .Portfolio_text ion-icon {
+      top: 10px;
+  }
+
+  @media only screen and (max-width: 768px) {
+      
+
+  /* ===========768px */
+      .Portfolio_box{
+          height: 650px;
+      }
+      .Portfolio_img{
+          height: 80%;
+      }
+    }
+  @media only screen and (max-width: 691px) {
+
+      /* max-width: 691px */
+      .img {
+          width: 100%;
+          height: 100%;
+      }
+      .heading2{
+          font-size: 13px;
+      }
+      .heading1{
+          font-size: 50px;
+      }
+      /* 691 */
+      .contact_content{
+          height: auto;
+      }
+  }
+  @media only screen and (max-width: 491px){
+      .Portfolio_img{
+          width: 100%;
+          height: 50%;
+      }
+      .Portfolio_box{
+          height: 470px;
+      }
+      .Portfolio_box_content{
+          height:auto;
+      }
+  }
+.logo_img{
+    margin-right: -131px;
+    margin-left: -140px;
+    width: 406px;
+    margin-top: -9px;
+}
+
+/* about section styles */
+
+#aboutUs {
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+
+
+#aboutUs img {
+    width: 565px;
+    /* margin: 47px; */
+    border-radius: 41px;
+    margin-left: 150px;
+    margin-top: 2px;
+}
+
+
+content {
+    margin-left: -189px;
+    margin-top: 60px;
+
+}
+
+.content h2 {
+    font-size: 50px;
+    color: #ffca70;
+    margin-top: 22px;
+}
+
+.content h4 {
+    font-size: 20px;
+    color: #fff;
+    margin: 10px 0;
+}
+
+
+.description {
+    color: #281818;
+    margin: 20px 0;
+    font-size: 20px;
+    line-height: 40px;
+    font-weight: 200;
+}
+
+.btn {
+    font-weight: bold;
+    border: 2px solid #ffca70;
+    cursor: pointer;
+    padding: 10px 20px;
+    border-radius: 20px;
+    transition: all 0.4s;
+    background-color: #ffca70;
+}
+
+.btn:hover {
+    border: 2px solid #ffca70;
+    background: transparent;
+    color: #ffca70;
+}
+
+@media screen and (max-width: 790px) {
+  #aboutUs img {
+    width: 92%;
+    margin-left: -31px;}
+
+    #aboutUs {
+        grid-template-columns: 1fr;
+        place-items: center;
+    }
+}
+.nav_bar{
+  background-color:#B0DAFF; 
+  margin-top: -100px;
+
+}
+{% endblock style %}
+
+{% block style1 %}
+
+{% endblock style1 %}
+    </style>
+
+</head>
+
+<body style="background-color:#B0DAFF;">
+  {% block nav %}
+    <nav class="navbar navbar-expand-lg navbar-custom   navbar-light nav_bar" style="">
+        <div class="container-fluid" style=" margin-bottom: 5px; margin-top: 5px;">
+          <a class="navbar-brand" href="/" style="margin: 0px; margin-right: -60px;">
+            <img src="{% static './img/logo.png' %}" class="logo_img" alt="Bootstrap"  >
+            Home-E Services
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link active nav_item" aria-current="page" href="/" name="home" style="font-family: 'Libre Baskerville', serif;">Home</a>
+              </li>
+              <li class="nav-item">
+          
+                <a class="nav-link active nav_item" href="#aboutUs" style="font-family: 'Libre Baskerville', serif;" >About</a>
+              </li>
+              {% block nav_service %}
+              <li class="nav-item">
+                <a class="nav-link active nav_item " href="#service" style="font-family: 'Libre Baskerville', serif;">Services</a>
+              </li>
+              {% endblock nav_service %}
+              {% block nav_item %}
+              <li class="nav-item">
+                <a class="nav-link active  nav_item" href="/login" style="font-family: 'Libre Baskerville', serif;">Login</a>
+              </li>
+              
+              <li class="nav-item dropdown nav_item"  style="margin-right: 92px;">
+                <a
+                  class="nav-link dropdown-toggle active "
+                  href="#"
+                  id="navbarDropdownMenuLink"
+                  role="button"
+                  data-mdb-toggle="dropdown"
+                  aria-expanded="false"
+                  style="font-family: 'Libre Baskerville', serif;"
+                  
+                >
+                  Register
+                </a>
+                <ul class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink" >
+                  <li >
+                    <a class="dropdown-item size nav_item" href="/user_register" style="font-family: 'Libre Baskerville', serif;">User</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item nav_item" href="/sp_register" style="font-family: 'Libre Baskerville', serif;">Service Provider</a>
+                  </li>
+                </ul>
+              </li>
+              {% endblock nav_item %}
+              <!-- <li class="nav-item">
+                <a class="nav-link active" id="submit" href="#" style="font-family: 'Libre Baskerville', serif;">profile</a>
+              </li> -->
+              <!-- <div class="popupContainer" id="popupMenu">
+                 <img id="image" src="./thankyou.webp" alt="">
+                    <h2> Thank You!</h2>
+                    <p> Thank you sir! Your form has been successfully submitted </p>
+                    <button id="close"> ok </button>
+             </div> -->
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      {% endblock nav %}
+
+
+
+{% block body %}
+
+    <main class="l-main">
+        <!--===== HOME =====-->
+        <section class="home" id="home">
+            <div class="home__container bd-grid">
+                <div class="home__img">
+                    <img src="{% static './img/home.png' %}" alt="" data-speed="-2">
+                </div>
+
+                <div class="home__data">
+                    <h1 class="home__title">Home-E<br>Services</h1>
+                    <p class="home__description">Let's choose the right Service <br> with Trust.</p>
+                    
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+    <!-- <h2 class="service_header">SERVICES</h2> -->
+    <h2 class="service_header" id="service">SERVICES</h2>
+    <section class="Portfolio">
+            <!-- <center>
+                <p class="heading2">VISIT MY PORTFOLIO AND KEEP YOUR FEEDBACK</p>
+                <h1 class="heading1" style="padding-bottom:70px;">My Portfolio</h1>
+            </center> -->
+            <div class="box-container" id="Portfolio">
+                <div class="Portfolio_box">
+                    <div class="Portfolio_box_content">
+                        <div class="Portfolio_img">
+                            <img src="{% static 'plumber_copy.jpeg' %}" alt="">
+                        </div>
+                        <div class="Portfolio_text">
+                            <h2>plumbering service</h2>
+                            <a href="/plumber_service" class="link_to"><ion-icon name="arrow-forward-outline"></ion-icon></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="Portfolio_box">
+                    <div class="Portfolio_box_content">
+                        <div class="Portfolio_img">
+                            <img src="{% static 'electision.jpeg' %}"  alt="">
+                        </div>
+                        <div class="Portfolio_text">
+                            <h2>electrision service</h2>
+                            <a href="/elecrision" class="link_to"><ion-icon name="arrow-forward-outline"></ion-icon></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="Portfolio_box">
+                    <div class="Portfolio_box_content">
+                        <div class="Portfolio_img">
+                            <img src="{% static 'carpanter.jpeg' %}" alt="">
+                        </div>
+                        <div class="Portfolio_text">
+                            <h2>carpanter service</h2>
+                            <a href="carpanter" class="link_to"><ion-icon name="arrow-forward-outline"></ion-icon></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="Portfolio_box">
+                    <div class="Portfolio_box_content">
+                        <div class="Portfolio_img">
+                            <img src="{% static 'painting.jpeg' %}"alt="">
+                        </div>
+                        <div class="Portfolio_text">
+                            <h2>painting service</h2>
+                            <a href="painting" class="link_to"><ion-icon name="arrow-forward-outline"></ion-icon></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="Portfolio_box">
+                    <div class="Portfolio_box_content">
+                        <div class="Portfolio_img">
+                            <img src="{% static 'cleaning.jpg' %}" alt="">
+                        </div>
+                        <div class="Portfolio_text">
+                            <h2>cleaning</h2>
+                            <a href="cleaning" class="link_to"><ion-icon name="arrow-forward-outline"></ion-icon></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="Portfolio_box">
+                    <div class="Portfolio_box_content">
+                        <div class="Portfolio_img">
+                            <img src="{% static 'gardning.jpg' %}" alt="">
+                        </div>
+                        <div class="Portfolio_text">
+                            <h2>gardaning</h2>
+                            <a href="gardaning" class="link_to"><ion-icon name="arrow-forward-outline"></ion-icon></a>
+                        </div>
+                      
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- staring of about section -->
+        <section id="aboutUs">
+          <img src="{% static 'about_image.jpeg' %}" alt="computer user">
+          <div class="content">
+              <h2>About Us</h2>
+              <h4> Developer & Designer </h4>
+              <p class="description">
+                We are dedicated to providing top-notch home services to meet all your needs. Our skilled professionals are committed to delivering exceptional service in a timely manner. Whether you require repairs, installations, or maintenance, we've got you covered. With our expertise and attention to detail, we strive to ensure your satisfaction. Experience hassle-free home services with us today!
+
+
+
+
+
+              </p>
+              <a href="/#service"><button class="btn" data-mdb-ripple-duration='0'>Get Service</button></a>
+          </div>
+      </section>
+        <!-- ending of about section -->
+
+        <div class="w-100 h-50 bg-dark py-5 px-5">
+          <!-- Footer Social -->
+          <div class="container border-bottom">
+              <ul class="d-flex w-100 justify-content-center flex-wrap flex-sm-row">
+                  <li class="pe-auto list-group-item my-2 px-4"><a href=""><i class="fs-5 text-white fa-brands fa-instagram"></i></a></li>
+                  <li class="pe-auto list-group-item my-2 px-4"><a href=""><i class="fs-5 text-white fa-brands fa-facebook"></i></a></li>
+                  <li class="pe-auto list-group-item my-2 px-4"><a href=""><i class="fs-5 text-white fa-brands fa-linkedin"></i></a></li>
+                  <li class="pe-auto list-group-item my-2 px-4"><a href=""><i class="fs-5 text-white fa-brands fa-github"></i></a></li>
+                  <li class="pe-auto list-group-item my-2 px-4"><a href=""><i class="fs-5 text-white fa-brands fa-twitter"></i></a></li>
+              </ul>
+          </div>
+  
+          <!-- Footer Company Name  -->
+          <h4 class="text-center my-4 text-white">
+            HOME-E SERVICES
+          </h4>
+  
+          <!-- Footer Flex Container -->
+          <div class="w-100 d-flex flex-wrap justify-content-between">
+  
+              <!-- Footer Flex Item -->
+              <div class="m-2 flex-item" style="width: 20rem;">
+                  <h4 class="heading" style="color: #e65b00;">HOME-E SERVICES</h4>
+                  <div class="content">
+                      <ul class="px-0">
+                          <li class="my-2 list-group-item"><a class="text-white text-decoration-none my-2" href="">Discover exceptional home services tailored to your needs. Our skilled professionals provide repairs, installations, and maintenance for a hassle-free experience. Satisfaction guaranteed!</a></li>
+                      </ul>
+                  </div>
+              </div>
+  
+              <!-- Footer Flex Item -->
+              <div class="m-2 flex-item">
+                  <h4 class="heading" style="color: #e65b00;">services</h4>
+                  <div class="content">
+                      <ul class="px-0">
+                          <li class="my-2 list-group-item"><a class="text-white text-decoration-none my-2" href="">plumbering</a></li>
+                          <li class="my-2 list-group-item"><a class="text-white text-decoration-none my-2" href="">electrision</a></li>
+                          <li class="my-2 list-group-item"><a class="text-white text-decoration-none my-2" href="">gardaning</a></li>
+                          <li class="my-2 list-group-item"><a class="text-white text-decoration-none my-2" href=""></a></li>
+                          <li class="my-2 list-group-item"><a class="text-white text-decoration-none my-2" href="">cleaning</a></li>
+                      </ul>
+                  </div>
+              </div>
+  
+              <!-- Footer Flex Item -->
+              <div class="m-2 flex-item">
+                  <h4 class="heading" style="color: #e65b00;">Useful Links</h4>
+                  <div class="content">
+                      <ul class="px-0">
+                          <li class="my-2 list-group-item"><a class="text-white text-decoration-none my-2" href="">Help</a></li>
+                          <li class="my-2 list-group-item"><a class="text-white text-decoration-none my-2" href="">Pricing</a></li>
+                          <li class="my-2 list-group-item"><a class="text-white text-decoration-none my-2" href="">Settings</a></li>
+                          <li class="my-2 list-group-item"><a class="text-white text-decoration-none my-2" href="">Order Details</a></li>
+                      </ul>
+                  </div>
+              </div>
+  
+              <!-- Footer Flex Item -->
+              <div class="m-2 flex-item">
+                  <h4 class="heading" style="color: #e65b00;">Contact Us</h4>
+                  <div class="content">
+                      <ul class="px-0">
+                          <li class="my-2 list-group-item"><a class="text-white text-decoration-none my-2" href="">Home-E Services</a></li>
+                          <li class="my-2 list-group-item"><a class="text-white text-decoration-none my-2" href="">contact@shettyaradhya24@gmail.com</a></li>
+                          <li class="my-2 list-group-item"><a class="text-white text-decoration-none my-2" href="">+91 1234567890</a></li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+      </div>
+  
+  
+  
+      <!-- Adding Scripts to Our HTML code -->
+      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+  
+    
+    
+</body>
+{% endblock body %}
+</html>

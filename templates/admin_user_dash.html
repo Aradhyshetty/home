@@ -1,0 +1,191 @@
+{% extends 'Dashboard.html' %}
+{% block title %}Home-E | user_details{% endblock title %}
+{% block style %}
+body {
+    position: relative;
+    margin-left: 101px;
+    padding: 2rem 0 0 6.75rem;
+    font-family: var(--body-font);
+    font-size: var(--normal-font-size);
+    transition: .5s;
+    padding:20px;
+    background-color:rgb(222, 237, 255);
+
+}
+
+
+
+
+
+
+@media (max-width: 576px) {
+    table {
+        font-size: 12px;
+    }
+}
+.sentence1{
+    margin-left: 80px;
+    font-size: 27px;
+    font-weight: bold;
+
+    text-shadow: 10px 10px 10px #242424;
+    
+}
+table{
+    width: 475px;
+}
+.table-container{
+
+width: 475px;
+
+height: 500px;
+overflow-y: auto;
+margin-top: 50px;
+margin-left: 5px;
+border-radius: 14px;
+
+}
+tr{
+border-bottom: 2px solid black;
+}
+th{
+
+
+ background-color:#009879;
+color: white;
+text-align: center;
+font-size: 16px;
+text-transform: uppercase;
+top: 20px;
+z-index: 2;
+padding: 15px;
+
+}
+td{
+
+margin-top: -20px;
+
+z-index: -1;
+
+padding: 10px;
+}
+tr:nth-child(odd){
+    background-color:#f3f3f3;
+}
+tr:nth-child(even){
+
+background-color:rgb(209, 209, 209)
+}
+.foot-page{
+width: 480px;
+height: 450px; 
+background-color: #242424;
+}
+.foot-log{
+position: absolute;
+color: white;
+font-size: 33px;
+font-weight: bolder;
+margin-left: 50px;
+margin-top: 30px;
+
+}
+.foot-link{
+margin-left: 40px;
+margin-top: 25px;
+
+}
+.footer-list{
+padding-top: 100px;
+font-weight: bold;
+margin-left: 15px;
+list-style: none;
+
+}
+.delete-form {
+    display: inline-block;
+    margin: 0;
+}
+
+.delete-button {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.delete-button:hover {
+    background-color: #c82333;
+}
+
+@media (max-width: 576px) {
+    table {
+        font-size: 12px;
+    }
+}
+alert_messege{
+    color: #004085;
+    background-color: #cce5ff;
+    border-color: #b8daff;
+    margin-left: 164px;
+}
+
+
+.alert-primary {
+    color: #004085;
+    background-color: #cce5ff;
+    border-color: #b8daff;
+    margin-left: 277px;
+}
+{% endblock style %}
+
+
+{% block body %}
+{% for m in messages %}
+<div class="alert alert-primary alert_messege" role="alert">
+  {{m}}
+</div>
+{% endfor %}
+<div class="container">
+    <h2>User Details</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Email</th>
+                <th>phone number</th>
+                <th> manage</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for u in user  %}
+            
+            
+            <tr>
+                <td>{{u.name}}</td>
+                <td>{{u.email}}</td>
+                <td>{{u.ph_no}}</td>
+                <td>
+                    <form class="delete-form" method='post' action="">
+                        {% csrf_token %}
+                        <input type="hidden" name="pk" value="{{u.id}}">
+                        <button type="submit" class="delete-button" name="button">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+            
+        </tbody>
+    </table>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+{% endblock body  %}
+
+</html>
