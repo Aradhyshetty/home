@@ -1,0 +1,128 @@
+*{
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+body{
+    font-family: montserrat;
+}
+nav{
+    background:linear-gradient(45deg, rgb(183, 126, 236), lightgreen);
+    height: 80px;
+    width: 100%;
+}
+label.logo{
+    color: rgb(7, 34, 3);
+    font-size: 35px;
+    font-family: Arial;
+    padding-left: 20px;
+    float: left;
+    padding-top: 10px;
+}
+nav ul{
+    float: right;
+    margin-right: 20px;
+}
+nav ul li{
+    display: inline-block;
+    line-height: 80px;
+    margin: 0 5px;
+}
+nav ul li a{
+    font-size: 17px;
+    text-transform: uppercase;
+    color: white;
+    padding: 7px 13px;
+    border-radius: 3px;
+   
+}
+nav ul li a:hover{
+    background: #88dfe2;
+
+}
+
+
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+body{
+    width: 100%;
+    background: linear-gradient(45deg, rgb(158, 231, 244), rgb(238, 144, 211));
+    
+    }
+.title h1{
+    text-align: center;
+    padding-top: 50px;
+    font-size: 42px;
+}
+.title h1::after{
+    content: "";
+    height: 4px;
+    width: 230px;
+    background-color: black;
+    display: block;
+    margin: auto;
+}
+.services{
+    padding-top: 50px;
+    width: 78%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 15px auto;
+    text-align: center; 
+     
+
+}
+.card{
+    height: 100px;
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 0px 20px;
+    padding: 20px 20px;
+    background-color: rgb(83, 131, 162);
+    border-radius: 10px;
+    cursor:pointer ;
+    display: table-row-group;
+   
+}
+.caed-2{
+    min-height: 100px;
+    width: 200px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    flex-direction: row;
+    margin: 0px 20px;
+    padding: 20px 20px;
+    background-color: rgb(250, 253, 255);
+    border-radius: 10px;
+    cursor: pointer;
+}
+.services-2{
+    width: 78%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 15px auto;
+    text-align: center;  
+
+}
+.btn{
+    border-radius: 5px;
+    border:no;
+    color: rgb(15, 13, 13);
+    padding: 15px 35px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 10p;
+    width: 180px;
+}

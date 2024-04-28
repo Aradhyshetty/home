@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+    <style>
+      /* @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap');
+  font-family: 'Roboto', sans-serif; */
+  
+  :root {
+      --main-color: #e00b4c;
+      --main-color2: #9fc4f4;
+      --font-color: #c4cfde;
+  }
+  
+  /* * {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      outline: none;
+      border: none;
+      text-decoration: none;
+      transition: .3s linear;
+  } */
+  
+  /* html {
+      font-size: 62.5%;
+      overflow-x: hidden;
+      scroll-padding-top: 9rem;
+      scroll-behavior: smooth;
+  }
+  
+  html::-webkit-scrollbar {
+      width: .8rem;
+  }
+  
+  html::-webkit-scrollbar-track {
+      background: transparent;
+  }
+  
+  html::-webkit-scrollbar-thumb {
+      background: var(--main-color2);
+      border-radius: 4rem;
+  }
+  
+  body {
+      background: var(--main-color2);
+  }
+   */
+  section {
+      padding: 4rem 5%;
+  }
+  
+  .main {
+      width: 100%;
+      height: 100vh;
+      background-image: url(images/background.jpg);
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: 0%;
+      animation: change 10s infinite ease-in-out;
+      z-index: -1;
+  }
+  .Portfolio .box-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 30px;
+  }
+  
+  .Portfolio_box {
+      height: 450px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(145deg, #A3BED2, #0970f8);
+      box-shadow: 20px 20px 30px #B0DAFF,
+          -20px -20px 30px #B0DAFF;
+      border-radius: 20px;
+  
+  }
+  
+  .Portfolio_box_content {
+      width: 90%;
+      height: 90%;
+      /* background: red; */
+  }
+  
+  .Portfolio_img {
+      width: 100%;
+      height: 65%;
+      /* background-color: green; */
+      border-radius: 20px;
+      overflow: hidden;
+  }
+  
+  .Portfolio_img img {
+      width: 100%;
+      height: 100%;
+      margin: auto;
+  }
+  
+  .Portfolio_box_content:hover .Portfolio_img img {
+      transform: scale(1.1);
+  }
+  
+  .Portfolio_text {
+      font-size: 20px;
+      text-align: center;
+      padding-top: 30px;
+      color: var(--font-color);
+      transition: .2s;
+      overflow: hidden;
+      /* background: yellow; */
+  }
+  
+  .Portfolio_text ion-icon {
+      font-size: 40px;
+      transform: rotate(-60deg);
+      position: relative;
+      top: 60px;
+  }
+  
+  .Portfolio_box_content:hover .Portfolio_text {
+      color: var(--main-color);
+  }
+  
+  .Portfolio_box_content:hover .Portfolio_text ion-icon {
+      top: 10px;
+  }
+  @media only screen and (max-width: 991px) {
+      html {
+          font-size: 55%;
+      
+  }}
+  @media only screen and (max-width: 768px) {
+      
+
+  /* ===========768px */
+      .Portfolio_box{
+          height: 650px;
+      }
+      .Portfolio_img{
+          height: 80%;
+      }
+    }
+  @media only screen and (max-width: 691px) {
+      .main h1{
+          font-size: 90px;
+          color: #b79685;
+          padding: 200px 0 0 50px;
+      }
+      .main p{
+          padding: 20px 0 0 50px;
+      }
+  
+  
+      /* max-width: 691px */
+      .img {
+          width: 100%;
+          height: 100%;
+      }
+      .heading2{
+          font-size: 13px;
+      }
+      .heading1{
+          font-size: 50px;
+      }
+      /* 691 */
+      .contact_content{
+          height: auto;
+      }
+  }
+  @media only screen and (max-width: 491px){
+      .Portfolio_img{
+          width: 100%;
+          height: 50%;
+      }
+      .Portfolio_box{
+          height: 470px;
+      }
+      .Portfolio_box_content{
+          height:auto;
+      }
+  }
+  </style>
+</head>
+<body style="background-color:#B0DAFF;">
+    <nav class="navbar navbar-expand-lg navbar-custom   navbar-light" style="background-color:#B0DAFF; margin-top: -100px;">
+        <div class="container-fluid" style=" margin-bottom: 5px; margin-top: 5px;">
+          <a class="navbar-brand" href="/home" style="margin: 0px; margin-right: -60px;">
+            <img src="./img/logo.png" class="logo_img" alt="Bootstrap"  >
+            Home-E Services
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/home" name="home" style="font-family: 'Libre Baskerville', serif;;">Home</a>
+              </li>
+              <li class="nav-item">
+          
+                <a class="nav-link active" href="/home" style="font-family: 'Libre Baskerville', serif;" >About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active " href="/home" style="font-family: 'Libre Baskerville', serif;">Services</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active " href="/login" style="font-family: 'Libre Baskerville', serif;">Login</a>
+              </li>
+    
+              <li class="nav-item dropdown"  style="margin-right: 92px;">
+                <a
+                  class="nav-link dropdown-toggle active "
+                  href="#"
+                  id="navbarDropdownMenuLink"
+                  role="button"
+                  data-mdb-toggle="dropdown"
+                  aria-expanded="false"
+                  style="font-family: 'Libre Baskerville', serif;"
+                  
+                >
+                  Register
+                </a>
+                <ul class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink" >
+                  <li >
+                    <a class="dropdown-item size" href="/register" style="font-family: 'Libre Baskerville', serif;">User</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="/vendor" style="font-family: 'Libre Baskerville', serif;">Service Provider</a>
+                  </li>
+                </ul>
+              </li>
+              <!-- <li class="nav-item">
+                <a class="nav-link active" id="submit" href="#" style="font-family: 'Libre Baskerville', serif;">profile</a>
+              </li> -->
+              <!-- <div class="popupContainer" id="popupMenu">
+                 <img id="image" src="./thankyou.webp" alt="">
+                    <h2> Thank You!</h2>
+                    <p> Thank you sir! Your form has been successfully submitted </p>
+                    <button id="close"> ok </button>
+             </div> -->
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+
+
+
+
+
+
+    <main class="l-main">
+        <!--===== HOME =====-->
+        <section class="home" id="home">
+            <div class="home__container bd-grid">
+                <div class="home__img">
+                    <img src="img/home.png" alt="" data-speed="-2";">
+                    <!-- <img src="assets/img/.png" alt="" data-speed="2" class="move">
+                    <img src="assets/img/.png" alt="" data-speed="2" class="move">
+                    <img src="assets/img/.png" alt="" data-speed="-2" class="move">
+                    <img src="assets/img/.png" alt="" data-speed="-2" class="move">
+                    <img src="assets/img/.png" alt="" data-speed="2" class="move"> -->
+                </div>
+
+                <div class="home__data">
+                    <h1 class="home__title">Home-E<br>Services</h1>
+                    <p class="home__description">Let's choose the right Service <br> with Trust.</p>
+                    <a href="#" class="home__button">Get Started</a><br>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+    <!-- <h2 class="service_header">SERVICES</h2> -->
+    <section class="Portfolio" style="border-top: 1px solid black;
+    border-bottom: 1px solid black; padding: 100px 5%;">
+            <center>
+                <p class="heading2">VISIT MY PORTFOLIO AND KEEP YOUR FEEDBACK</p>
+                <h1 class="heading1" style="padding-bottom:70px;">My Portfolio</h1>
+            </center>
+            <div class="box-container" id="Portfolio">
+                <div class="Portfolio_box">
+                    <div class="Portfolio_box_content">
+                        <div class="Portfolio_img">
+                            <img src="images/plumber.jpeg" alt="">
+                        </div>
+                        <div class="Portfolio_text">
+                            <h2>plumbering service</h2>
+                            <ion-icon name="arrow-forward-outline"></ion-icon>
+                        </div>
+                    </div>
+                </div>
+                <div class="Portfolio_box">
+                    <div class="Portfolio_box_content">
+                        <div class="Portfolio_img">
+                            <img src="images/electision.jpeg" alt="">
+                        </div>
+                        <div class="Portfolio_text">
+                            <h2>electrision service</h2>
+                           <a href="/anu/"> <ion-icon name="arrow-forward-outline"></ion-icon></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="Portfolio_box">
+                    <div class="Portfolio_box_content">
+                        <div class="Portfolio_img">
+                            <img src="images/carpanter.jpeg" alt="">
+                        </div>
+                        <div class="Portfolio_text">
+                            <h2>carpanter service</h2>
+                            <ion-icon name="arrow-forward-outline"></ion-icon>
+                        </div>
+                    </div>
+                </div>
+                <div class="Portfolio_box">
+                    <div class="Portfolio_box_content">
+                        <div class="Portfolio_img">
+                            <img src="images/painting.jpeg" alt="">
+                        </div>
+                        <div class="Portfolio_text">
+                            <h2>painting service</h2>
+                            <ion-icon name="arrow-forward-outline"></ion-icon>
+                        </div>
+                    </div>
+                </div>
+                <div class="Portfolio_box">
+                    <div class="Portfolio_box_content">
+                        <div class="Portfolio_img">
+                            <img src="images/img6.jpg" alt="">
+                        </div>
+                        <div class="Portfolio_text">
+                            <h2>Front view woman wearing trucker hat.</h2>
+                            <ion-icon name="arrow-forward-outline"></ion-icon>
+                        </div>
+                    </div>
+                </div>
+                <div class="Portfolio_box">
+                    <div class="Portfolio_box_content">
+                        <div class="Portfolio_img">
+                            <img src="images/img7.jpg" alt="">
+                        </div>
+                        <a href=""><div class="Portfolio_text">
+                            <h2>Front view woman wearing trucker hat.</h2>
+                            <ion-icon name="arrow-forward-outline"></ion-icon>
+                        </div>
+                      </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    
+    
+</body>
+<script src="script.js"></script>
+</html>
